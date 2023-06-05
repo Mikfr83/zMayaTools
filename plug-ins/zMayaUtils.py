@@ -57,7 +57,6 @@ class PluginMenu(Menu):
 
         pm.mel.eval('ChaSkinningMenu("mainRigSkinningMenu")')
         self.add_menu_item('zMayaTools_ToggleMoveSkinnedJoints', label='Toggle Move Skinned Joints', parent=pm.mel.globals['gRigSkinningMenu'],
-                insertAfter='moveSkinJointsItem',
                 command='zMoveSkinnedJoints -toggle',
                 sourceType='mel',
                 image='smoothSkin.png',
