@@ -297,6 +297,10 @@ def create_shelf_button_menu(shelf, parent_menu=None):
             cmd['tearOff'] = True
 
         def add_menu_item(name, cmd, with_option_button=None):
+            # Add a prefix to the name of the menu item we create so it's different from the original
+            # shelf item.  If we use the same name, commands like objectTypeUI will sometimes query
+            # the wrong item.
+            name = 'shelfMenuItem_' + name
             pm.menuItem(name, **cmd)
             if with_option_button is not None:
                 pm.menuItem(name + '_opt', optionBox=True, command=with_option_button)
@@ -373,7 +377,7 @@ def create_shelf_button_menu(shelf, parent_menu=None):
             else:
                 add_shelf_item(parent_menu, menu_cmds, shelf_button)
 
-    return Menu(shelf.path, shelf.label, update_func=update_shelf_submenu, parent_menu=parent_menu)
+    return Menu('shelfMenu_' + shelf.path, shelf.label, update_func=update_shelf_submenu, parent_menu=parent_menu)
 
 def create_shelf_tab_menu(parent_menu=None):
     """
