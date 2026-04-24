@@ -1,4 +1,4 @@
-import copy, six, traceback
+import copy, traceback
 from maya import OpenMaya as om
 import pymel.core as pm
 from pprint import pprint
@@ -261,7 +261,7 @@ def get_shelf_submenus(shelf_button):
     # shelf context menu.
     def is_default_menu_item(popup):
         cmd = pm.menuItem(popup, q=True, command=True)
-        return isinstance(cmd, six.string_types) and cmd.startswith('/*dSBRMBMI*/')
+        return isinstance(cmd, str) and cmd.startswith('/*dSBRMBMI*/')
     popup_menu_items = [p for p in  popup_menu_items if not is_default_menu_item(p)]
 
     # popupMenu returns ambiguous paths.  Prefix the path to the popup menu to make

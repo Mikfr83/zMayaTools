@@ -1,4 +1,4 @@
-import contextlib, functools, logging, os, six, subprocess, time
+import contextlib, functools, logging, os, subprocess, time
 from contextlib import contextmanager
 from collections import namedtuple
 from pymel import core as pm
@@ -33,7 +33,7 @@ class OptionVar(object):
     _types = {
         'int': var_type(expected_type=int, maya_type='intValue'),
         'float': var_type(expected_type=(float, int), maya_type='floatValue'),
-        'string': var_type(expected_type=six.string_types, maya_type='stringValue'),
+        'string': var_type(expected_type=str, maya_type='stringValue'),
         'bool': var_type(expected_type=(bool, int), maya_type='intValue'),
     }
     
