@@ -2,17 +2,8 @@ import fnmatch, os, maya, sys, subprocess
 from fnmatch import fnmatch
 from zMayaTools import maya_logging, Qt, util
 import xml.etree.cElementTree as ET
-try:
-    from StringIO import StringIO
-except:
-    from io import StringIO
 
 log = maya_logging.get_log()
-
-try:
-    import pyside2uic
-except ImportError:
-    pyside2uic = None
 
 def mtime(path):
     try:
@@ -48,12 +39,6 @@ def compile_layout(filename, input_data, output_file):
     QT used to include a module to do this, which for some reason was removed, leaving
     us having to shell out for each file individually and no proper API.
     """
-    # If pyside2uic is available, use it.  Older versions of uic.exe don't support Python.
-    if pyside2uic is not None:
-        with open(output_file, 'w') as output:
-            pyside2uic.compileUi(StringIO(input_data), output)
-        return
-    
     # Run uic to compile the file.  Since we modify the file before compiling it, we
     # pass the data through stdin.
     bin_path = '%s/bin/uic' % os.environ['MAYA_LOCATION']

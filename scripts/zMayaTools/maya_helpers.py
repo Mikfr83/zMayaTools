@@ -9,7 +9,7 @@ from maya import OpenMayaUI as omui
 from maya.app.general import mayaMixin
 from maya.api.MDGContextGuard import MDGContextGuard
 from maya import cmds
-from shiboken2 import wrapInstance
+from shiboken6 import wrapInstance
 
 try:
     from importlib import reload

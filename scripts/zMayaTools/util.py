@@ -85,8 +85,8 @@ def get_main_window_hwnd():
         raise NotImplementedError()
 
     from maya import OpenMayaUI as omui
-    from shiboken2 import wrapInstance
-    from PySide2 import QtWidgets
+    from shiboken6 import wrapInstance
+    from PySide6 import QtWidgets
     main_window = omui.MQtUtil.mainWindow()
     window = wrapInstance(int(main_window), QtWidgets.QMainWindow)
     return int(window.winId())

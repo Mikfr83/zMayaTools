@@ -2,7 +2,7 @@
 #
 # This should usually not be used by itself.
 import contextlib
-from PySide2 import QtWidgets
+from PySide6 import QtWidgets
 from . import util
 
 try:
